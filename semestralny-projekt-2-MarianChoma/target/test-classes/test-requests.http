@@ -1,0 +1,246 @@
+POST http://localhost:8080/carparks
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Slovensko",
+  "address": "Ilkovicova 3",
+  "prices": 5,
+  "floors": [
+    {
+      "identifier": "F1",
+      "spots": [{
+        "identifier": "P1"
+      }]
+    }
+  ]
+}
+
+###
+GET http://localhost:8080/carparks?name=Slovensko
+Accept: application/json
+
+###
+GET http://localhost:8080/carparks/1
+Accept: application/json
+
+###
+DELETE http://localhost:8080/carparks/2
+
+###
+
+PUT http://localhost:8080/carparks/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Eurovea",
+  "address": "Ilkovicova 3",
+  "prices": 5
+}
+
+###
+
+GET http://localhost:8080/carparks/1/floors
+Accept: application/json
+
+###
+
+POST http://localhost:8080/carparks/1/floors
+Content-Type: application/json
+Accept: application/json
+
+{
+  "identifier": "F2",
+  "spots": [{
+    "identifier": "P5"
+  }]
+}
+###
+GET http://localhost:8080/carparkfloors/1
+Accept: application/json
+
+###
+
+DELETE http://localhost:8080/carparks/1/floors/F1
+
+###
+
+PUT http://localhost:8080/carparks/1/floors/F1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "identifier": "F2"
+}
+
+###
+
+GET http://localhost:8080/carparks/1/spots
+Accept: application/json
+###
+
+POST http://localhost:8080/carparks/1/floors/F1/spots
+Content-Type: application/json
+Accept: application/json
+
+{
+  "identifier": "P1"
+}
+
+###
+PUT http://localhost:8080/parkingspots/4
+Content-Type: application/json
+Accept: application/json
+
+{
+  "identifier": "P1",
+  "free": false
+}
+
+###
+GET http://localhost:8080/parkingspots/1
+Accept: application/json
+
+###
+GET http://localhost:8080/carparks/1/floors/F1/spots
+Accept: application/json
+
+###
+DELETE http://localhost:8080/parkingspots/1
+
+###
+GET http://localhost:8080/users
+Accept: application/json
+
+###
+POST http://localhost:8080/users
+Content-Type: application/json
+Accept: application/json
+
+{
+  "firstName": "Milan",
+  "lastName": "Kalny",
+  "email": "email1@email.com",
+  "cars": [
+    {
+      "brand": "Ferrari",
+      "model": "sedan",
+      "colour": "cervena",
+      "vrp": "SV201Au"
+    }
+  ],
+  "coupons": [{
+    "name": "mensiaZlava",
+    "discount": 20
+  }]
+}
+###
+PUT http://localhost:8080/users/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "firstName": "Milana",
+  "lastName": "Kalny",
+  "email": "email1@email.com"
+}
+
+###
+GET http://localhost:8080/users/1
+Accept: application/json
+
+###
+DELETE http://localhost:8080/users/2
+
+###
+POST http://localhost:8080/cars
+Content-Type: application/json
+Accept: application/json
+
+{
+  "brand": "Ferrari",
+  "model": "sedan",
+  "colour": "cervena",
+  "vrp": "SV202Au",
+  "owner": {
+    "email": "email1@email.com"
+  }
+}
+
+###
+GET http://localhost:8080/cars/1
+Accept: application/json
+
+###
+GET http://localhost:8080/cars
+Accept: application/json
+
+###
+DELETE http://localhost:8080/cars/9
+
+###
+PUT http://localhost:8080/cars/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "brand": "Ferrari",
+  "model": "sedan",
+  "vrp": "SV201Au",
+  "colour": "zlta"
+}
+
+###
+GET http://localhost:8080/coupons?user=1
+Accept: application/json
+
+###
+POST http://localhost:8080/coupons
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "mensiaZlava",
+  "discount": 20
+}
+
+###
+GET http://localhost:8080/coupons/1
+Accept: application/json
+
+###
+DELETE http://localhost:8080/coupons/1
+
+###
+POST http://localhost:8080/coupons/1/give/1
+Accept: application/json
+
+###
+POST http://localhost:8080/reservations
+Content-Type: application/json
+Accept: application/json
+
+{
+  "parkingSpot": {
+    "id": 1
+  },
+  "car": {
+    "id": 1
+  },
+  "start": "2022-04-05"
+}
+
+###
+GET http://localhost:8080/reservations?user=1
+Accept: application/json
+
+###
+GET http://localhost:8080/reservations/1
+Accept: application/json
+
+###
+POST http://localhost:8080/reservations/1/end
+Accept: application/json
+
+
